@@ -10,9 +10,7 @@
     }
   ],
   "description": "Makes use of Project Torremo to execute it's pipeline steps.",
-  "categories": [
-    "Azure Pipelines"
-  ],
+  "categories": ["Azure Pipelines"],
   "tags": [
     "torremo",
     "azure",
@@ -52,15 +50,16 @@
     },
     {
       "path": "torremo/icon.png"
+    },
+    {
+      "path": "torremo/node_modules"
     }
   ],
   "contributions": [
     {
       "id": "torremo-azure-task",
       "type": "ms.vss-distributed-task.task",
-      "targets": [
-        "ms.vss-distributed-task.tasks"
-      ],
+      "targets": ["ms.vss-distributed-task.tasks"],
       "properties": {
         "name": "torremo"
       }
