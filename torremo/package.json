@@ -5,11 +5,9 @@
   "license": "ISC",
   "private": true,
   "type": "module",
-  "main": "dist/index.js",
-  "module": "dist/index.js",
-  "types": "dist/index.d.ts",
   "scripts": {
-    "build": "tsc",
+    "clean": "rm -r dist/ || exit 0",
+    "build": "npm run clean && tsc",
     "test": "jest --passWithNoTests"
   },
   "files": [

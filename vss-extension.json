@@ -2,15 +2,17 @@
   "manifestVersion": 1,
   "id": "torremo-azure-task",
   "name": "SAP Torremo library",
-  "version": "0.0.0",
-  "publisher": "ProjectTorremo",
+  "version": "1.0.2",
+  "publisher": "SDP",
   "targets": [
     {
       "id": "Microsoft.VisualStudio.Services"
     }
   ],
   "description": "Makes use of Project Torremo to execute it's pipeline steps.",
-  "categories": ["Azure Pipelines"],
+  "categories": [
+    "Azure Pipelines"
+  ],
   "tags": [
     "torremo",
     "azure",
@@ -43,14 +45,22 @@
   },
   "files": [
     {
-      "path": "torremo"
+      "path": "torremo/dist"
+    },
+    {
+      "path": "torremo/task.json"
+    },
+    {
+      "path": "torremo/icon.png"
     }
   ],
   "contributions": [
     {
       "id": "torremo-azure-task",
       "type": "ms.vss-distributed-task.task",
-      "targets": ["ms.vss-distributed-task.tasks"],
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
       "properties": {
         "name": "torremo"
       }
