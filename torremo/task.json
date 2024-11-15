@@ -2,14 +2,14 @@
   "$schema": "https://raw.githubusercontent.com/Microsoft/azure-pipelines-task-lib/master/tasks.schema.json",
   "id": "5cc3e466-ae8a-4450-a73d-50053f7c3881",
   "name": "torremo",
-  "friendlyName": "This task TORREMO everything",
+  "friendlyName": "Torremo Library",
   "description": "Execute a step from the SAP Torremo library",
   "category": "Utility",
   "author": "SAP SE",
   "version": {
     "Major": 1,
     "Minor": 0,
-    "Patch": 6
+    "Patch": 14
   },
   "instanceNameFormat": "Echo $(samplestring)",
   "inputs": [
