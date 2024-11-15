@@ -1,0 +1,14 @@
+{
+  "name": "@sap/torremo-azure-task",
+  "description": "Torremo task for Azure DevOps",
+  "author": "SAP SE",
+  "license": "ISC",
+  "private": true,
+  "main": "script.js",
+  "dependencies": {
+    "azure-pipelines-task-lib": "^4.13.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.4.8"
+  }
+}

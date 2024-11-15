@@ -1,0 +1,59 @@
+{
+  "manifestVersion": 1,
+  "id": "torremo-azure-task",
+  "name": "SAP Torremo library",
+  "version": "0.0.0",
+  "publisher": "ProjectTorremo",
+  "targets": [
+    {
+      "id": "Microsoft.VisualStudio.Services"
+    }
+  ],
+  "description": "Makes use of Project Torremo to execute it's pipeline steps.",
+  "categories": ["Azure Pipelines"],
+  "tags": [
+    "torremo",
+    "azure",
+    "sap",
+    "concur",
+    "cd",
+    "continuous deployment",
+    "sdp",
+    "safe deployment practices"
+  ],
+  "content": {
+    "details": {
+      "path": "overview.md"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "uri": "https://github.tools.sap/concur-sap-ecosystem/torremo-azure-task"
+  },
+  "links": {
+    "repository": {
+      "uri": "https://github.tools.sap/concur-sap-ecosystem/torremo-azure-task"
+    },
+    "issues": {
+      "uri": "https://github.tools.sap/concur-sap-ecosystem/torremo-azure-task/issues"
+    }
+  },
+  "icons": {
+    "default": "vss-extension-icon.png"
+  },
+  "files": [
+    {
+      "path": "torremo"
+    }
+  ],
+  "contributions": [
+    {
+      "id": "torremo-azure-task",
+      "type": "ms.vss-distributed-task.task",
+      "targets": ["ms.vss-distributed-task.tasks"],
+      "properties": {
+        "name": "torremo"
+      }
+    }
+  ]
+}
