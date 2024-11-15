@@ -4,15 +4,11 @@
   "author": "SAP SE",
   "license": "ISC",
   "private": true,
-  "type": "module",
   "scripts": {
     "clean": "rm -r dist/ || exit 0",
     "build": "npm run clean && tsc",
     "test": "jest --passWithNoTests"
   },
-  "files": [
-    "dist"
-  ],
   "dependencies": {
     "azure-pipelines-task-lib": "^4.13.0"
   },
