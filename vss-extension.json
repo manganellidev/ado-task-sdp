@@ -2,7 +2,7 @@
   "manifestVersion": 1,
   "id": "torremo-azure-task",
   "name": "Torremo library",
-  "version": "1.0.24",
+  "version": "1.0.26",
   "publisher": "SDP",
   "targets": [
     {
