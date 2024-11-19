@@ -1,17 +1,16 @@
 {
-  "$schema": "https://raw.githubusercontent.com/Microsoft/azure-pipelines-task-lib/master/tasks.schema.json",
   "id": "5cc3e466-ae8a-4450-a73d-50053f7c3881",
   "name": "torremo",
+  "instanceNameFormat": "Torremo Library",
   "friendlyName": "Torremo Library",
-  "description": "Execute a step from the SAP Torremo library",
+  "description": "Execute a step from the Torremo library",
   "category": "Utility",
   "author": "SAP SE",
   "version": {
     "Major": 1,
     "Minor": 0,
-    "Patch": 14
+    "Patch": 24
   },
-  "instanceNameFormat": "Echo $(samplestring)",
   "inputs": [
     {
       "name": "stepName",
@@ -52,19 +51,5 @@
     "Node20_1": {
       "target": "dist/index.js"
     }
-  },
-  "messages": {
-    "DownloadTorremoFailedFromLocation": "Failed to download Torremo from location %s. Error %s",
-    "TorremoNotFoundInFolder": "Torremo executable not found in path %s",
-    "TorremoDownloadFailed": "Failed to download Torremo from location %s. Error %s",
-    "VerifyTorremoInstallation": "Verifying Torremo installation..."
-  },
-  "dataSourceBindings": [
-    {
-      "target": "userRepository",
-      "endpointId": "$(gitHubConnection)",
-      "dataSourceName": "UserRepositories",
-      "resultTemplate": "{ \"Value\" : \"{{full_name}}\", \"DisplayValue\" : \"{{full_name}}\" }"
-    }
-  ]
+  }
 }

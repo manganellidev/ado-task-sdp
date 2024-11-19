@@ -1,15 +1,13 @@
 {
   "compilerOptions": {
+    "outDir": "./dist",
     "target": "es6",
-    "module": "CommonJS",
-    "moduleResolution": "node",
-    "outDir": "dist",
+    "module": "commonjs",
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "sourceMap": true,
-    "types": ["node", "jest"]
+    "forceConsistentCasingInFileNames": true
   },
-  "include": ["src"],
-  "exclude": ["node_modules", "dist", "tests"]
+  "compileOnSave": true,
+  "exclude": ["node_modules/**"]
 }

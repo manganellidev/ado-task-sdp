@@ -1,14 +1,9 @@
-import { execFile } from "child_process";
-import { promisify } from "util";
 import * as taskLib from "azure-pipelines-task-lib/task";
 import path from "path";
 
-const execFileAsync = promisify(execFile);
-
 export async function callTorremoLibrary(stepName: string) {
   try {
-    const { stdout } = await execFileAsync("./torremo-library", [stepName]);
-    return stdout.trim();
+    return null;
   } catch (error) {
     throw new Error(
       `Error calling torremo library binary: ${(error as any).message}`
@@ -29,15 +24,15 @@ async function run(): Promise<void> {
     const torremoVersion = taskLib.getInput("torremoVersion", false);
     const gitHubConnection = taskLib.getInput("gitHubConnection", false);
 
-    taskLib.debug(`stepName: ${stepName}`);
-    taskLib.debug(`flags: ${flags}`);
-    taskLib.debug(`torremoVersion: ${torremoVersion}`);
-    taskLib.debug(`gitHubConnection: ${gitHubConnection}`);
+    console.log(`stepName: ${stepName}`);
+    console.log(`flags: ${flags}`);
+    console.log(`torremoVersion: ${torremoVersion}`);
+    console.log(`gitHubConnection: ${gitHubConnection}`);
 
-    const result = await callTorremoLibrary(stepName);
-    taskLib.debug(`Result: ${result}`);
+    // const result = await callTorremoLibrary(stepName);
+    // console.log(`Result: ${result}`);
 
-    taskLib.setResult(taskLib.TaskResult.Succeeded, result);
+    taskLib.setResult(taskLib.TaskResult.Succeeded, "Torremo task succeeded");
   } catch (error) {
     taskLib.setResult(taskLib.TaskResult.Failed, (error as any).message);
   }

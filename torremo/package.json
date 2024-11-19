@@ -4,14 +4,14 @@
   "author": "SAP SE",
   "license": "ISC",
   "private": true,
+  "main": "index.js",
   "scripts": {
-    "clean": "rm -r dist/ || exit 0",
-    "build": "npm run clean && tsc",
+    "clean": "rm -r dist/ reports/ &>/dev/null || exit 0",
+    "build:production": "npm run clean && npm i && tsc --project tsconfig.build.json && npm prune --production",
     "test": "jest --passWithNoTests"
   },
   "dependencies": {
-    "azure-pipelines-task-lib": "^4.13.0",
-    "azure-pipelines-tool-lib": "^2.0.7"
+    "azure-pipelines-task-lib": "^4.13.0"
   },
   "devDependencies": {
     "@types/jest": "^29.5.14",

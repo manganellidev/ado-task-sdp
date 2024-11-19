@@ -1,8 +1,8 @@
 {
   "manifestVersion": 1,
   "id": "torremo-azure-task",
-  "name": "SAP Torremo library",
-  "version": "1.0.12",
+  "name": "Torremo library",
+  "version": "1.0.24",
   "publisher": "SDP",
   "targets": [
     {
@@ -10,9 +10,7 @@
     }
   ],
   "description": "Makes use of Project Torremo to execute it's pipeline steps.",
-  "categories": [
-    "Azure Pipelines"
-  ],
+  "categories": ["Azure Pipelines"],
   "tags": [
     "torremo",
     "azure",
@@ -23,53 +21,19 @@
     "sdp",
     "safe deployment practices"
   ],
-  "content": {
-    "details": {
-      "path": "overview.md"
-    }
-  },
-  "repository": {
-    "type": "git",
-    "uri": "https://github.tools.sap/concur-sap-ecosystem/torremo-azure-task"
-  },
-  "links": {
-    "repository": {
-      "uri": "https://github.tools.sap/concur-sap-ecosystem/torremo-azure-task"
-    },
-    "issues": {
-      "uri": "https://github.tools.sap/concur-sap-ecosystem/torremo-azure-task/issues"
-    }
-  },
   "icons": {
     "default": "vss-extension-icon.png"
   },
   "files": [
     {
-      "path": "torremo/dist/"
-    },
-    {
-      "path": "torremo/node_modules/"
-    },
-    {
-      "path": "torremo/package-lock.json"
-    },
-    {
-      "path": "torremo/package.json"
-    },
-    {
-      "path": "torremo/task.json"
-    },
-    {
-      "path": "torremo/icon.png"
+      "path": "torremo"
     }
   ],
   "contributions": [
     {
       "id": "torremo-azure-task",
       "type": "ms.vss-distributed-task.task",
-      "targets": [
-        "ms.vss-distributed-task.tasks"
-      ],
+      "targets": ["ms.vss-distributed-task.tasks"],
       "properties": {
         "name": "torremo"
       }
