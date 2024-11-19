@@ -1,9 +1,9 @@
-bump-version: build
+bump-version:
 	@echo "Incrementing version number"
 	@jq '.version |= (split(".") | .[2] |= (tonumber + 1 | tostring) | join("."))' vss-extension.json > tmp.json && mv tmp.json vss-extension.json
 	@jq '.version.Patch |= (. + 1)' torremo/task.json > tmp.json && mv tmp.json torremo/task.json
 
-create-ado-extension:
+create-ado-extension: bump-version
 	@echo "Creating ADO extension"
 	@cd torremo/ && npm run build:production && cd ..
 	@npx tfx-cli extension create --manifests vss-extension.json --output-path torremo-azure-task.vsix
