@@ -1,3 +1,7 @@
+install-deps:
+	@echo "Installing dependencies"
+	@cd torremo && npm i && cd ..
+
 bump-version:
 	@echo "Incrementing version number"
 	@jq '.version |= (split(".") | .[2] |= (tonumber + 1 | tostring) | join("."))' vss-extension.json > tmp.json && mv tmp.json vss-extension.json

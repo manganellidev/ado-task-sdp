@@ -1,15 +1,15 @@
 {
   "id": "5cc3e466-ae8a-4450-a73d-50053f7c3881",
-  "name": "torremo",
-  "instanceNameFormat": "Torremo Library",
-  "friendlyName": "Torremo Library",
+  "name": "torremo-beta",
+  "instanceNameFormat": "Torremo Library (Beta)",
+  "friendlyName": "Torremo Library (Beta)",
   "description": "Execute a step from the Torremo library",
   "category": "Utility",
   "author": "SAP SE",
   "version": {
     "Major": 1,
     "Minor": 0,
-    "Patch": 26
+    "Patch": 39
   },
   "inputs": [
     {
@@ -27,15 +27,6 @@
       "defaultValue": "",
       "required": false,
       "helpMarkDown": "Option flags for Torremo step"
-    },
-    {
-      "name": "torremoVersion",
-      "type": "string",
-      "label": "Torremo Version",
-      "defaultValue": "",
-      "required": false,
-      "helpMarkDown": "The version of the Torremo binary, defaults to the latest release.",
-      "groupName": "advanced"
     },
     {
       "name": "gitHubConnection",

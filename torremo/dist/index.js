@@ -39,40 +39,22 @@ exports.callTorremoLibrary = callTorremoLibrary;
 const taskLib = __importStar(require("azure-pipelines-task-lib/task"));
 const path_1 = __importDefault(require("path"));
 const fs_1 = __importDefault(require("fs"));
+const log_1 = require("./util/log");
 function callTorremoLibrary(stepName_1) {
-    return __awaiter(this, arguments, void 0, function* (stepName, flags = "", torremoVersion = "", gitHubConnection = "") {
+    return __awaiter(this, arguments, void 0, function* (stepName, flags = "") {
         try {
-            console.log("Calling torremo library binary");
-            const torremoBinaryPath = path_1.default.join(process.cwd(), "sdp-go-lib-cache", "concur-sdp-go-library-0.0.2");
+            (0, log_1.consoleLog)("[callTorremoLibrary]", "STARTED");
+            const torremoBinaryPath = path_1.default.join(process.cwd(), "torremo-lib-cache", "torremo");
             fs_1.default.chmodSync(torremoBinaryPath, 0o755);
-            let files = fs_1.default.readdirSync(process.cwd());
-            console.log(`Files in directory "${process.cwd()}":`);
-            files.forEach((file) => {
-                const fullPath = path_1.default.join(process.cwd(), file);
-                const isDirectory = fs_1.default.statSync(fullPath).isDirectory();
-                console.log(`${file} ${isDirectory ? "(Directory)" : "(File)"}`);
-            });
-            const dirCache = path_1.default.join(process.cwd(), "sdp-go-lib-cache");
-            files = fs_1.default.readdirSync(dirCache);
-            console.log(`Files in directory "${dirCache}":`);
-            files.forEach((file) => {
-                const fullPath = path_1.default.join(dirCache, file);
-                const isDirectory = fs_1.default.statSync(fullPath).isDirectory();
-                console.log(`${file} ${isDirectory ? "(Directory)" : "(File)"}`);
-            });
-            const torremoArgs = [
-                "run",
-                stepName,
-                "--flags",
-                flags,
-                "--torremo-version",
-                torremoVersion,
-                "--github-connection",
-                gitHubConnection,
-            ];
-            console.log(`torremoBinaryPath: ${torremoBinaryPath}`);
-            console.log(`torremoArgs: ${torremoArgs}`);
-            const torremoResult = taskLib.execSync(torremoBinaryPath, torremoArgs);
+            (0, log_1.consoleLog)("[callTorremoLibrary]", `\ntorremoBinaryPath: ${torremoBinaryPath}
+      stepName: ${stepName}
+      flags: ${flags}
+      `);
+            const torremoResult = taskLib
+                .tool(torremoBinaryPath)
+                .arg(stepName)
+                .line(flags)
+                .execSync();
             if (torremoResult.code !== 0) {
                 throw new Error(`Torremo library binary failed with exit code ${torremoResult.code}`);
             }
@@ -80,28 +62,29 @@ function callTorremoLibrary(stepName_1) {
         catch (error) {
             throw new Error(`Error calling torremo library binary: ${error.message}`);
         }
+        finally {
+            (0, log_1.consoleLog)("[callTorremoLibrary]", "FINISHED");
+        }
     });
 }
 function run() {
     return __awaiter(this, void 0, void 0, function* () {
-        taskLib.setResourcePath(path_1.default.join(__dirname, "..", "task.json"));
         try {
+            (0, log_1.consoleLog)("[run]", "STARTED");
+            taskLib.setResourcePath(path_1.default.join(__dirname, "..", "task.json"));
             const stepName = taskLib.getInput("stepName", true);
             if (!stepName) {
                 throw new Error("Input required: stepName");
             }
             const flags = taskLib.getInput("flags", false);
-            const torremoVersion = taskLib.getInput("torremoVersion", false);
-            const gitHubConnection = taskLib.getInput("gitHubConnection", false);
-            console.log(`stepName: ${stepName}`);
-            console.log(`flags: ${flags}`);
-            console.log(`torremoVersion: ${torremoVersion}`);
-            console.log(`gitHubConnection: ${gitHubConnection}`);
-            yield callTorremoLibrary(stepName, flags, torremoVersion, gitHubConnection);
+            yield callTorremoLibrary(stepName, flags);
             taskLib.setResult(taskLib.TaskResult.Succeeded, "Torremo task succeeded");
         }
         catch (error) {
             taskLib.setResult(taskLib.TaskResult.Failed, error.message);
+        }
+        finally {
+            (0, log_1.consoleLog)("[run]", "FINISHED");
         }
     });
 }
