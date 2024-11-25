@@ -51,6 +51,8 @@ jobs:
 
       - name: Commit Updated Version Files
         run: |
+          git config user.email "github-actions@users.noreply.github.com"
+          git config user.name "github-actions"
           git add vss-extension.json torremo/task.json
           git commit -m "Bump version [skip ci]"
 
