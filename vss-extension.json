@@ -2,7 +2,7 @@
   "manifestVersion": 1,
   "id": "torremo-azure-task",
   "name": "Torremo library (Beta)",
-  "version": "1.0.39",
+  "version": "1.0.40",
   "publisher": "SDP",
   "targets": [
     {
@@ -10,7 +10,9 @@
     }
   ],
   "description": "Makes use of Project Torremo to execute it's pipeline steps. (Beta)",
-  "categories": ["Azure Pipelines"],
+  "categories": [
+    "Azure Pipelines"
+  ],
   "tags": [
     "torremo",
     "azure",
@@ -53,7 +55,9 @@
     {
       "id": "torremo-azure-task",
       "type": "ms.vss-distributed-task.task",
-      "targets": ["ms.vss-distributed-task.tasks"],
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
       "properties": {
         "name": "torremo"
       }

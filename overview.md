@@ -1,6 +1,6 @@
 # Torremo Azure DevOps Task
 
-This extension provides a wrapper task for the _Project Torremo_ SDP steps.
+This extension provides a wrapper task for the Project Torremo SDP steps.
 
 ## How to use
 
