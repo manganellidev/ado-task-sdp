@@ -6,9 +6,10 @@
   "private": true,
   "main": "index.js",
   "scripts": {
-    "clean": "rm -r dist/ reports/ &>/dev/null || exit 0",
+    "clean": "rm -r dist/ &>/dev/null || exit 0",
+    "build": "npm run clean && npm i && tsc --project tsconfig.build.json",
     "build:production": "npm run clean && npm i && tsc --project tsconfig.build.json && npm prune --production",
-    "test": "jest --passWithNoTests"
+    "test": "jest --silent"
   },
   "dependencies": {
     "azure-pipelines-task-lib": "^4.13.0"

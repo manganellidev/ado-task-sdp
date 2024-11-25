@@ -2,7 +2,7 @@
   "manifestVersion": 1,
   "id": "torremo-azure-task",
   "name": "Torremo library (Beta)",
-  "version": "1.0.40",
+  "version": "1.0.42",
   "publisher": "SDP",
   "targets": [
     {
@@ -10,9 +10,7 @@
     }
   ],
   "description": "Makes use of Project Torremo to execute it's pipeline steps. (Beta)",
-  "categories": [
-    "Azure Pipelines"
-  ],
+  "categories": ["Azure Pipelines"],
   "tags": [
     "torremo",
     "azure",
@@ -33,17 +31,17 @@
   },
   "repository": {
     "type": "git",
-    "uri": "https://github.tools.sap/project-piper/piper-azure-task"
+    "uri": "https://github.tools.sap/concur-sap-ecosystem/torremo-azure-task"
   },
   "links": {
     "home": {
-      "uri": "https://www"
+      "uri": "https://github.tools.sap/concur-sap-ecosystem/torremo-azure-task#readme"
     },
     "repository": {
-      "uri": "https://github.tools.sap/project-piper/piper-azure-task"
+      "uri": "https://github.tools.sap/concur-sap-ecosystem/torremo-azure-task"
     },
     "issues": {
-      "uri": "https://github.tools.sap/project-piper/piper-azure-task/issues"
+      "uri": "https://github.tools.sap/concur-sap-ecosystem/torremo-azure-task/issues"
     }
   },
   "files": [
@@ -55,9 +53,7 @@
     {
       "id": "torremo-azure-task",
       "type": "ms.vss-distributed-task.task",
-      "targets": [
-        "ms.vss-distributed-task.tasks"
-      ],
+      "targets": ["ms.vss-distributed-task.tasks"],
       "properties": {
         "name": "torremo"
       }

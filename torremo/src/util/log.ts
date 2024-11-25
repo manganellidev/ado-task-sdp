@@ -3,11 +3,11 @@ type LogLevel = "info" | "warn" | "error";
 export function consoleLog(
   prefix: string,
   message: string,
-  level: LogLevel = "info",
-  includeTimestamp: boolean = false
+  options: { level?: LogLevel; includeTimestamp?: boolean } = {}
 ): void {
-  const timestamp = includeTimestamp ? new Date().toISOString() + " " : "";
-  const logMessage = `${timestamp}${prefix} ${message}`;
+  const { level = "info", includeTimestamp = false } = options;
+  const timestamp = includeTimestamp ? `[${new Date().toISOString()}] ` : "";
+  const logMessage = `${timestamp}[${prefix}] ${message}`;
 
   switch (level) {
     case "info":
@@ -20,6 +20,6 @@ export function consoleLog(
       console.error(logMessage);
       break;
     default:
-      console.log(logMessage);
+      throw new Error(`Unsupported log level: ${level}`);
   }
 }

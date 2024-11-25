@@ -10,7 +10,7 @@ on:
 jobs:
   unit-tests:
     name: Run Unit Tests
-    runs-on: [ubuntu-latest]
+    runs-on: [self-hosted, solinas]
     defaults:
       run:
         working-directory: torremo/
@@ -31,11 +31,13 @@ jobs:
 
   bump-version:
     name: Bump Version
-    runs-on: [ubuntu-latest]
+    runs-on: [self-hosted, solinas]
     needs: unit-tests
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.PAT }}
 
       - name: Increment Version in vss-extension.json
         run: |
@@ -49,8 +51,6 @@ jobs:
 
       - name: Commit Updated Version Files
         run: |
-          git config user.name "GitHub Actions"
-          git config user.email "actions@github.com"
           git add vss-extension.json torremo/task.json
           git commit -m "Bump version [skip ci]"
 
@@ -60,12 +60,20 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   create-ado-extension:
-    name: Create ADO Extension
-    runs-on: [ubuntu-latest]
+    name: Create & Publish ADO Extension
+    runs-on: [self-hosted, solinas]
     needs: bump-version
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: main
+
+      - name: Set Up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.x
 
       - name: Install Dependencies
         run: npm ci
@@ -78,14 +86,6 @@ jobs:
       - name: Create ADO Extension Package
         run: |
           npx tfx-cli extension create --manifests vss-extension.json --output-path torremo-azure-task.vsix
-
-  publish-ado-extension:
-    name: Publish ADO Extension
-    runs-on: [ubuntu-latest]
-    needs: create-ado-extension
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v4
 
       - name: Publish ADO Extension
         run: |
